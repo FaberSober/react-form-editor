@@ -1,9 +1,54 @@
 /* add css module styles here (optional) */
 
-.test {
-  margin: 2em;
-  padding: 0.5em;
-  border: 2px solid #000;
-  font-size: 2em;
-  text-align: center;
+.rfeContaienr {
+  display: flex;
+}
+
+.rfeToolbox {
+  width: 241px;
+  border-right: 1px solid #ccc;
+}
+
+.rfeToolItemModalLabel {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px;
+}
+
+.rfeToolItemDiv {
+  display: inline-block;
+  width: 120px;
+  padding: 6px;
+}
+
+.rfeToolItem {
+  cursor: move;
+  padding: 6px;
+  background: #f4f6fc;
+  border: 1px solid #f4f6fc;
+}
+
+.rfeToolItem > span {
+  font-size: 14px;
+  color: #333;
+}
+
+.rfeToolItem:hover {
+  border: 1px dashed #69c0ff;
+}
+
+.rfePanel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.rfeGridLayout {
+  width: 840px;
+  min-height: 400px;
+}
+
+.rfePropertiesDiv {
+  width: 200px;
+  border-left: 1px solid #ccc;
 }
