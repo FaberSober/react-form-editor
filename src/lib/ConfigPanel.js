@@ -1,5 +1,5 @@
 import React, { PureComponent, Fragment } from 'react'
-import { Form, Radio } from 'antd'
+import { Form, Radio, InputNumber } from 'antd'
 
 import styles from '../styles.module.css'
 
@@ -43,6 +43,9 @@ export default class ConfigPanel extends PureComponent {
               <Radio.Button value="left">左对齐</Radio.Button>
               <Radio.Button value="right">右对齐</Radio.Button>
             </Radio.Group>
+          </Form.Item>
+          <Form.Item name="width" label="表单宽度">
+            <InputNumber step={1} />
           </Form.Item>
         </Form>
       </div>

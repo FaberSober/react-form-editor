@@ -26,6 +26,7 @@ export class MyFirstGrid extends React.Component {
     droppingId: generateId(),
     droppingItemLayout: { w: 6, h: 1 }, // dropping item ghost layout
     formConfig: {
+      width: 800, // form width
       labelAlign: 'right',
     }, // antd form config
   }
@@ -76,11 +77,12 @@ export class MyFirstGrid extends React.Component {
   /**
    * 表单配置变更
    */
-  handleFormConfigChange = formConfig => {
-    const { layout, ...restConfig } = formConfig;
+  handleFormConfigChange = values => {
+    const { formConfig } = this.state
     this.setState({
       formConfig: {
-        ...restConfig,
+        ...formConfig,
+        ...values,
       }
     })
   }
@@ -142,11 +144,12 @@ export class MyFirstGrid extends React.Component {
           <Form labelAlign={formConfig.labelAlign}>
             <GridLayout
               className={styles.rfeGridLayout}
+              style={{ width: formConfig.width }}
               layout={layout}
               onLayoutChange={this.onLayoutChange}
               cols={12}
               rowHeight={50}
-              width={800}
+              width={formConfig.width}
               isDroppable
               onDrop={this.onDrop}
               useCSSTransforms={this.state.mounted}
@@ -162,7 +165,7 @@ export class MyFirstGrid extends React.Component {
           </Form>
         </div>
         <div className={styles.rfePropertiesDiv}>
-          <ConfigPanel onFormConfigChange={this.handleFormConfigChange} />
+          <ConfigPanel initialFormConfig={formConfig} onFormConfigChange={this.handleFormConfigChange} />
         </div>
       </div>
     )
