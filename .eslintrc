@@ -1,8 +1,8 @@
 {
   "parser": "babel-eslint",
   "extends": [
-    // "standard",
-    // "standard-react",
+    "standard",
+    "standard-react",
     // "plugin:prettier/recommended",
     // "prettier/standard",
     // "prettier/react"
@@ -28,6 +28,9 @@
     "react/jsx-handler-names": 0,
     "react/jsx-fragments": 0,
     "react/no-unused-prop-types": 0,
-    "import/export": 0
+    "import/export": 0,
+    "comma-dangle": 0,
+    "semi": 0,
+    "jsx-quotes": 0
   }
 }

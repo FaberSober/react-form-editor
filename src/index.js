@@ -2,7 +2,7 @@ import React from 'react'
 import GridLayout from 'react-grid-layout'
 import each from 'lodash/each'
 import filter from 'lodash/filter'
-import { FaTrashAlt} from 'react-icons/fa';
+import { FaTrashAlt } from 'react-icons/fa'
 import { DatePicker, Input, Form } from 'antd'
 import FormItemLabel from './lib/FormItemLabel'
 import ConfigPanel from './lib/ConfigPanel'
@@ -121,7 +121,7 @@ export class MyFirstGrid extends React.Component {
             key={v.i}
             className={selected ? styles.rfeFormItemDivSelected : styles.rfeFormItemDiv}
             style={{ backgroundColor: v.backgroundColor }}
-            onClick={() => { this.setState({ selectedItemId: v.i })}}
+            onClick={() => this.setState({ selectedItemId: v.i })}
           >
             {this.renderItem(formItem, v.i)}
             {selected ? <div className={styles.rfeFormItemDelDiv} onClick={() => this.handleDelItem(v.i)}><FaTrashAlt /></div> : null}
