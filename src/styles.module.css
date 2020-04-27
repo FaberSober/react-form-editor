@@ -4,6 +4,7 @@
   display: flex;
 }
 
+/* ------------------------------------------- left panel - toolbox ------------------------------------------- */
 .rfeToolbox {
   width: 241px;
   border-right: 1px solid #ccc;
@@ -37,18 +38,70 @@
   border: 1px dashed #69c0ff;
 }
 
+/* ------------------------------------------- main panel - react grid layout ------------------------------------------- */
 .rfePanel {
   flex: 1;
   display: flex;
   justify-content: center;
+  overflow-x: scroll;
 }
 
 .rfeGridLayout {
-  width: 840px;
+  min-width: 800px;
   min-height: 400px;
+  background-color: #fcfcfc;
+  border: 1px solid #ccc;
 }
 
+.rfeFormItemDiv, .rfeFormItemDivSelected {
+  padding: 8px;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.rfeFormItemDiv:hover {
+  background-color: #e6f7ff;
+}
+
+.rfeFormItemDivSelected {
+  background-color: #69c0ff;
+}
+
+.rfeFormItemDiv::after, .rfeFormItemDivSelected::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  display: block;
+  z-index: 1001;
+}
+
+/* ------------------------------------------- right panel - config panel ------------------------------------------- */
 .rfePropertiesDiv {
-  width: 200px;
+  width: 300px;
   border-left: 1px solid #ccc;
+}
+
+.rfeConfigTabDiv {
+  
+}
+
+.rfeConfigTab, .rfeConfigTabCurrent {
+  display: inline-block;
+  padding: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+}
+
+.rfeConfigTabCurrent {
+  border-bottom: 2px solid #69c0ff;
+}
+
+/* ------------------------------------------- global and etc... ------------------------------------------- */
+:global(.react-resizable-handle) {
+  z-index: 1009;
 }

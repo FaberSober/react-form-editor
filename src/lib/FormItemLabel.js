@@ -8,15 +8,17 @@ const FormItemLabelList = [
     key: 'basic_item',
     name: '基础字段',
     components: [
-      { icon: '', type: 'single_input', label: '单行文本' },
-      { icon: '', type: 'multipe_input', label: '多行文本' }
+      { icon: '', type: 'single_input', label: '单行文本', layout: { w: 12, h: 1 } },
+      { icon: '', type: 'multipe_input', label: '多行文本', layout: { w: 12, h: 2 } },
+      { icon: '', type: 'date_picker', label: '日期选择', layout: { w: 12, h: 1 } },
     ]
   }
 ]
 
 export default class FormItemLabel extends PureComponent {
   static defaultProps = {
-    onItemDragStart: () => {}
+    onItemDragStart: () => {},
+    onItemDragEnd: () => {},
   }
 
   /** 工具栏Item拖动开始 */
@@ -25,6 +27,13 @@ export default class FormItemLabel extends PureComponent {
     e.dataTransfer.setData('item', JSON.stringify(item))
     if (onItemDragStart) {
       onItemDragStart(item)
+    }
+  }
+
+  handleItemDragEnd = (e, item) => {
+    const { onItemDragEnd } = this.props
+    if (onItemDragEnd) {
+      onItemDragEnd(item)
     }
   }
 
@@ -47,6 +56,7 @@ export default class FormItemLabel extends PureComponent {
                       // which we can do by adding this attribute
                       // @see https://bugzilla.mozilla.org/show_bug.cgi?id=568313
                       onDragStart={(e) => this.handleItemDragStart(e, item)}
+                      onDragEnd={(e) => this.handleItemDragEnd(e, item)}
                     >
                       <span>{item.icon}</span>
                       <span>{item.label}</span>
