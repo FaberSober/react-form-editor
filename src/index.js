@@ -25,7 +25,9 @@ export class MyFirstGrid extends React.Component {
     layout: [], // Form组件Item--对应的布局
     droppingId: generateId(),
     droppingItemLayout: { w: 6, h: 1 }, // dropping item ghost layout
-    formLayout: 'horizontal', // antd form layout
+    formConfig: {
+      labelAlign: 'right',
+    }, // antd form config
   }
 
   componentDidMount() {
@@ -69,6 +71,18 @@ export class MyFirstGrid extends React.Component {
     delete newLayoutItem[id]
     const newLayout = filter(layout, l => l.i !== id)
     this.setState({ layoutItem: newLayoutItem, layout: newLayout })
+  }
+
+  /**
+   * 表单配置变更
+   */
+  handleFormConfigChange = formConfig => {
+    const { layout, ...restConfig } = formConfig;
+    this.setState({
+      formConfig: {
+        ...restConfig,
+      }
+    })
   }
 
   renderItem = (formItem, id) => {
@@ -118,15 +132,14 @@ export class MyFirstGrid extends React.Component {
 
   render() {
     // console.log('MyFirstGrid.render')
-    // layout is an array of objects, see the demo for more complete usage
-    const { layout, droppingId, droppingItemLayout, formLayout } = this.state
+    const { layout, droppingId, droppingItemLayout, formConfig } = this.state
     return (
       <div className={styles.rfeContaienr}>
         <div className={styles.rfeToolbox}>
           <FormItemLabel onItemDragStart={this.handleToolItemDropStart} onItemDragEnd={() => this.setState({ dragingTool: false })} />
         </div>
         <div className={styles.rfePanel}>
-          <Form layout={formLayout}>
+          <Form labelAlign={formConfig.labelAlign}>
             <GridLayout
               className={styles.rfeGridLayout}
               layout={layout}
@@ -149,7 +162,7 @@ export class MyFirstGrid extends React.Component {
           </Form>
         </div>
         <div className={styles.rfePropertiesDiv}>
-          <ConfigPanel />
+          <ConfigPanel onFormConfigChange={this.handleFormConfigChange} />
         </div>
       </div>
     )
