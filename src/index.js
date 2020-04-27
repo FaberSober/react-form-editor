@@ -1,7 +1,8 @@
 import React from 'react'
 import GridLayout from 'react-grid-layout'
 import each from 'lodash/each'
-import find from 'lodash/find'
+import filter from 'lodash/filter'
+import { FaTrashAlt} from 'react-icons/fa';
 import { DatePicker, Input, Form } from 'antd'
 import FormItemLabel from './lib/FormItemLabel'
 import ConfigPanel from './lib/ConfigPanel'
@@ -20,8 +21,8 @@ export class MyFirstGrid extends React.Component {
     mounted: false,
     dragingTool: false,
     selectedItemId: undefined, // 选中状态的Item#id
-    layoutTmp: [],
-    layout: [],
+    layoutItem: {}, // Form组件Item Key-Item 对应Object
+    layout: [], // Form组件Item--对应的布局
     droppingId: generateId(),
     droppingItemLayout: { w: 6, h: 1 }, // dropping item ghost layout
     formLayout: 'horizontal', // antd form layout
@@ -34,7 +35,7 @@ export class MyFirstGrid extends React.Component {
   onLayoutChange = (layout) => {
     // console.log('onLayoutChange', layout)
     if (!this.state.dragingTool) {
-      this.setState({ layout, layoutTmp: layout })
+      this.setState({ layout })
     }
   }
 
@@ -59,6 +60,17 @@ export class MyFirstGrid extends React.Component {
     }))
   }
 
+  /**
+   * 删除Item
+   */
+  handleDelItem = (id) => {
+    const { layoutItem, layout } = this.state;
+    const newLayoutItem = { ...layoutItem };
+    delete newLayoutItem[id]
+    const newLayout = filter(layout, l => l.i !== id)
+    this.setState({ layoutItem: newLayoutItem, layout: newLayout })
+  }
+
   renderItem = (formItem, id) => {
     // console.log('renderItem', formItem)
     if (typeof formItem === 'undefined') {
@@ -77,9 +89,7 @@ export class MyFirstGrid extends React.Component {
         break
     }
     return (
-      <div>
-        <div>{comp}</div>
-      </div>
+      <div>{comp}</div>
     )
   }
 
@@ -88,14 +98,17 @@ export class MyFirstGrid extends React.Component {
     const doms = []
     each(layout, (v, k) => {
       if (v.i !== droppingId) {
+        const selected = v.i === selectedItemId;
+        const formItem = layoutItem[v.i];
         doms.push(
           <div
             key={v.i}
-            className={v.i === selectedItemId ? styles.rfeFormItemDivSelected : styles.rfeFormItemDiv}
+            className={selected ? styles.rfeFormItemDivSelected : styles.rfeFormItemDiv}
             style={{ backgroundColor: v.backgroundColor }}
             onClick={() => { this.setState({ selectedItemId: v.i })}}
           >
-            {this.renderItem(layoutItem[v.i], v.i)}
+            {this.renderItem(formItem, v.i)}
+            {selected ? <div className={styles.rfeFormItemDelDiv} onClick={() => this.handleDelItem(v.i)}><FaTrashAlt /></div> : null}
           </div>
         )
       }
