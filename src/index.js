@@ -3,7 +3,7 @@ import GridLayout from 'react-grid-layout'
 import each from 'lodash/each'
 import filter from 'lodash/filter'
 import { FaTrashAlt } from 'react-icons/fa'
-import { DatePicker, Input, Form } from 'antd'
+import { DatePicker, Input, Form, Checkbox } from 'antd'
 import FormItemLabel from './lib/FormItemLabel'
 import ConfigPanel from './lib/ConfigPanel'
 import { generateId } from './utils/utils'
@@ -102,6 +102,13 @@ export class MyFirstGrid extends React.Component {
         break
       case 'date_picker':
         comp = <Form.Item label={formItem.label}><DatePicker /></Form.Item>
+        break
+      case 'checkbox':
+        comp = (
+          <Form.Item label={formItem.label}>
+            <Checkbox.Group options={formItem.options} />
+          </Form.Item>
+        )
         break
     }
     return (

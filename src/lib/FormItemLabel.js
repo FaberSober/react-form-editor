@@ -11,6 +11,7 @@ const FormItemLabelList = [
       { icon: '', type: 'single_input', label: '单行文本', layout: { w: 12, h: 1 } },
       { icon: '', type: 'multipe_input', label: '多行文本', layout: { w: 12, h: 2 } },
       { icon: '', type: 'date_picker', label: '日期选择', layout: { w: 12, h: 1 } },
+      { icon: '', type: 'checkbox', label: '多选框', layout: { w: 12, h: 1 }, options: [{ label: 'A', value: 'A' }, { label: 'B', value: 'B' }, { label: 'C', value: 'C' }] },
     ]
   }
 ]
