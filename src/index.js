@@ -87,6 +87,12 @@ export class MyFirstGrid extends React.Component {
     })
   }
 
+  handleFormItemConfigChange = values => {
+    const { selectedItemId, layoutItem } = this.state
+    layoutItem[selectedItemId].properties = values;
+    this.setState({ layoutItem: { ...layoutItem } })
+  }
+
   renderItem = (formItem, id) => {
     // console.log('renderItem', formItem)
     if (typeof formItem === 'undefined') {
@@ -95,13 +101,13 @@ export class MyFirstGrid extends React.Component {
     let comp = <div>组件未定义</div>
     switch (formItem.type) {
       case 'single_input':
-        comp = <Form.Item label={formItem.label}><Input /></Form.Item>
+        comp = <Form.Item label={formItem.label}><Input {...formItem.properties} /></Form.Item>
         break
       case 'multipe_input':
-        comp = <Form.Item label={formItem.label}><Input.TextArea autoSize={{ minRows: 3 }} /></Form.Item>
+        comp = <Form.Item label={formItem.label}><Input.TextArea autoSize={{ minRows: 3 }} {...formItem.properties} /></Form.Item>
         break
       case 'date_picker':
-        comp = <Form.Item label={formItem.label}><DatePicker /></Form.Item>
+        comp = <Form.Item label={formItem.label}><DatePicker {...formItem.properties} /></Form.Item>
         break
       case 'checkbox':
         comp = (
@@ -141,7 +147,8 @@ export class MyFirstGrid extends React.Component {
 
   render() {
     // console.log('MyFirstGrid.render')
-    const { layout, droppingId, droppingItemLayout, formConfig } = this.state
+    const { layout, layoutItem, droppingId, droppingItemLayout, formConfig, selectedItemId } = this.state
+
     return (
       <div className={styles.rfeContaienr}>
         <div className={styles.rfeToolbox}>
@@ -172,7 +179,13 @@ export class MyFirstGrid extends React.Component {
           </Form>
         </div>
         <div className={styles.rfePropertiesDiv}>
-          <ConfigPanel initialFormConfig={formConfig} onFormConfigChange={this.handleFormConfigChange} />
+          <ConfigPanel
+            initialFormConfig={formConfig}
+            onFormConfigChange={this.handleFormConfigChange}
+            formItemId={selectedItemId}
+            formItemConfig={layoutItem[selectedItemId]}
+            onFormItemConfigChange={this.handleFormItemConfigChange}
+          />
         </div>
       </div>
     )
