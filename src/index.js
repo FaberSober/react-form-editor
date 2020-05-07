@@ -3,9 +3,10 @@ import GridLayout from 'react-grid-layout'
 import each from 'lodash/each'
 import filter from 'lodash/filter'
 import { FaTrashAlt } from 'react-icons/fa'
-import { DatePicker, Input, Form, Checkbox } from 'antd'
+import { Form, Button } from 'antd'
 import FormItemLabel from './lib/FormItemLabel'
 import ConfigPanel from './lib/ConfigPanel'
+import FormItemComponent from './lib/FormItemComponent'
 import { generateId } from './utils/utils'
 import styles from './styles.module.css'
 
@@ -93,35 +94,6 @@ export class MyFirstGrid extends React.Component {
     this.setState({ layoutItem: { ...layoutItem } })
   }
 
-  renderItem = (formItem, id) => {
-    // console.log('renderItem', formItem)
-    if (typeof formItem === 'undefined') {
-      return <div>组件未定义</div>
-    }
-    let comp = <div>组件未定义</div>
-    switch (formItem.type) {
-      case 'single_input':
-        comp = <Form.Item label={formItem.label}><Input {...formItem.properties} /></Form.Item>
-        break
-      case 'multipe_input':
-        comp = <Form.Item label={formItem.label}><Input.TextArea autoSize={{ minRows: 3 }} {...formItem.properties} /></Form.Item>
-        break
-      case 'date_picker':
-        comp = <Form.Item label={formItem.label}><DatePicker {...formItem.properties} /></Form.Item>
-        break
-      case 'checkbox':
-        comp = (
-          <Form.Item label={formItem.label}>
-            <Checkbox.Group options={formItem.options} />
-          </Form.Item>
-        )
-        break
-    }
-    return (
-      <div>{comp}</div>
-    )
-  }
-
   renderLayouItem = () => {
     const { layout, layoutItem, selectedItemId, droppingId } = this.state
     const doms = []
@@ -136,7 +108,7 @@ export class MyFirstGrid extends React.Component {
             style={{ backgroundColor: v.backgroundColor }}
             onClick={() => this.setState({ selectedItemId: v.i })}
           >
-            {this.renderItem(formItem, v.i)}
+            <FormItemComponent formItem={formItem} />
             {selected ? <div className={styles.rfeFormItemDelDiv} onClick={() => this.handleDelItem(v.i)}><FaTrashAlt /></div> : null}
           </div>
         )
@@ -155,6 +127,10 @@ export class MyFirstGrid extends React.Component {
           <FormItemLabel onItemDragStart={this.handleToolItemDropStart} onItemDragEnd={() => this.setState({ dragingTool: false })} />
         </div>
         <div className={styles.rfePanel}>
+          <div>
+            <Button type="link">预览</Button>
+            <Button type="link">保存</Button>
+          </div>
           <Form labelAlign={formConfig.labelAlign}>
             <GridLayout
               className={styles.rfeGridLayout}
