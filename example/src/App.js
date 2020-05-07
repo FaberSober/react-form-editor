@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { MyFirstGrid } from 'react-form-editor'
+import { FormEditPanel } from 'react-form-editor'
 import 'react-form-editor/dist/index.css'
 
 const App = () => {
-  return <MyFirstGrid />
+  return <FormEditPanel />
 }
 
 export default App
