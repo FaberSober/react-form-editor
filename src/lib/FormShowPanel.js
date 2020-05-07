@@ -79,9 +79,9 @@ export default class FormShowPanel extends React.Component {
 
   render() {
     const { layout, formConfig } = this.state
-    const { formData, ...props } = this.props
+    const { formData, formRef, ...props } = this.props
     return (
-      <Form labelAlign={formConfig.labelAlign} {...props}>
+      <Form labelAlign={formConfig.labelAlign} ref={formRef} {...props}>
         <GridLayout
           // className={styles.rfeGridLayout}
           style={{ width: formConfig.width }}

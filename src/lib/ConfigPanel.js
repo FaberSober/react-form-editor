@@ -1,5 +1,5 @@
 import React, { PureComponent, Fragment } from 'react'
-import { Form, Radio, InputNumber } from 'antd'
+import { Form, Radio, InputNumber, Input } from 'antd'
 
 import InputProperty from './formProperty/InputProperty'
 
@@ -41,10 +41,10 @@ export default class ConfigPanel extends PureComponent {
   }
 
   /** 表单属性变更 */
-  onFormValuesChange = (values) => {
+  onFormValuesChange = (changedValues, allValues) => {
     const { onFormConfigChange } = this.props;
     if (onFormConfigChange) {
-      onFormConfigChange(values)
+      onFormConfigChange(allValues)
     }
   }
 
@@ -57,6 +57,9 @@ export default class ConfigPanel extends PureComponent {
           initialValues={initialFormConfig}
           onValuesChange={this.onFormValuesChange}
         >
+          <Form.Item name="name" label="表单名称">
+            <Input />
+          </Form.Item>
           <Form.Item name="labelAlign" label="表单布局">
             <Radio.Group buttonStyle="solid">
               <Radio.Button value="left">左对齐</Radio.Button>

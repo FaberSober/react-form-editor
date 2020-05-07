@@ -20,6 +20,8 @@ import 'antd/dist/antd.css'
  * 表单编辑组件
  */
 export default class FormEditPanel extends React.Component {
+  previewFormRef = React.createRef();
+
   layoutDraging = {}; // 保存拖动中的layout
 
   state = {
@@ -99,7 +101,12 @@ export default class FormEditPanel extends React.Component {
    */
   handleFormItemConfigChange = values => {
     const { selectedItemId, layoutItem } = this.state
-    layoutItem[selectedItemId] = { ...layoutItem[selectedItemId], ...values }
+    const { formProperties, properties } = values
+    layoutItem[selectedItemId] = {
+      ...layoutItem[selectedItemId],
+      formProperties: { ...layoutItem[selectedItemId].formProperties, ...formProperties },
+      properties: { ...layoutItem[selectedItemId].properties, ...properties },
+    }
     this.setState({ layoutItem: { ...layoutItem } })
   }
 
@@ -198,10 +205,15 @@ export default class FormEditPanel extends React.Component {
         <Modal
           visible={this.state.previewModalVisible}
           title="表单预览"
+          onOk={() => this.previewFormRef.submit()}
           onCancel={() => this.setState({ previewModalVisible: false })}
           width={formConfig.width + 48}
         >
-          <FormShowPanel formData={this.state.previewFormData} />
+          <FormShowPanel
+            formRef={ref => (this.previewFormRef = ref)}
+            onFinish={values => console.log('onFinish', values)}
+            formData={this.state.previewFormData}
+          />
         </Modal>
       </div>
     )

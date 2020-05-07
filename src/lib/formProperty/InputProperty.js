@@ -4,6 +4,7 @@ import { Form, Input } from 'antd'
 const defaultValues = {
   // 表单属性
   label: undefined,
+  key: undefined,
   // 组件属性
   addonBefore: undefined,
   addonAfter: undefined,
@@ -22,7 +23,6 @@ export default class InputProperty extends PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    // console.log('InputProperty#componentWillReceiveProps', nextProps, this.props)
     if (nextProps.formItemId !== this.props.formItemId) {
       if (this.formRef && this.formRef.setFieldsValue) {
         this.formRef.setFieldsValue({ ...defaultValues, ...this.transFormValue(nextProps) });
@@ -30,11 +30,11 @@ export default class InputProperty extends PureComponent {
     }
   }
 
-  onFormValuesChange = (values) => {
+  onFormValuesChange = (changedValues, allValues) => {
     const { onFormConfigChange } = this.props;
     if (onFormConfigChange) {
-      const { label, ...restValues } = values
-      onFormConfigChange({ formProperties: { label }, properties: restValues })
+      const { label, name, ...restValues } = allValues
+      onFormConfigChange({ formProperties: { label, name }, properties: restValues })
     }
   }
 
@@ -57,6 +57,9 @@ export default class InputProperty extends PureComponent {
           onValuesChange={this.onFormValuesChange}
         >
           <Form.Item name="label" label="标题">
+            <Input />
+          </Form.Item>
+          <Form.Item name="name" label="字段name">
             <Input />
           </Form.Item>
           <Form.Item name="addonBefore" label="前置标签">
