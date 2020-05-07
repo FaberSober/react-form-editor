@@ -99,7 +99,7 @@ export default class FormEditPanel extends React.Component {
    */
   handleFormItemConfigChange = values => {
     const { selectedItemId, layoutItem } = this.state
-    layoutItem[selectedItemId].properties = values;
+    layoutItem[selectedItemId] = { ...layoutItem[selectedItemId], ...values }
     this.setState({ layoutItem: { ...layoutItem } })
   }
 

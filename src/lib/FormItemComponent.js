@@ -15,19 +15,20 @@ export default class FormItemComponent extends PureComponent {
       return <div>组件未定义</div>
     }
     let comp = <div>组件未定义</div>
+    const formItemFullLayout = { labelCol: { span: 3 }, wrapperCol: { span: 20 } };
     switch (formItem.type) {
       case 'single_input':
-        comp = <Form.Item label={formItem.label}><Input {...formItem.properties} /></Form.Item>
+        comp = <Form.Item {...formItemFullLayout} {...formItem.formProperties}><Input {...formItem.properties} /></Form.Item>
         break
       case 'multipe_input':
-        comp = <Form.Item label={formItem.label}><Input.TextArea autoSize={{ minRows: 3 }} {...formItem.properties} /></Form.Item>
+        comp = <Form.Item {...formItemFullLayout} {...formItem.formProperties}><Input.TextArea autoSize={{ minRows: 3 }} {...formItem.properties} /></Form.Item>
         break
       case 'date_picker':
-        comp = <Form.Item label={formItem.label}><DatePicker {...formItem.properties} /></Form.Item>
+        comp = <Form.Item {...formItemFullLayout} {...formItem.formProperties}><DatePicker {...formItem.properties} /></Form.Item>
         break
       case 'checkbox':
         comp = (
-          <Form.Item label={formItem.label}>
+          <Form.Item {...formItemFullLayout} {...formItem.formProperties}>
             <Checkbox.Group options={formItem.options} />
           </Form.Item>
         )

@@ -2,6 +2,9 @@ import React, { PureComponent } from 'react'
 import { Form, Input } from 'antd'
 
 const defaultValues = {
+  // 表单属性
+  label: undefined,
+  // 组件属性
   addonBefore: undefined,
   addonAfter: undefined,
 }
@@ -22,7 +25,7 @@ export default class InputProperty extends PureComponent {
     // console.log('InputProperty#componentWillReceiveProps', nextProps, this.props)
     if (nextProps.formItemId !== this.props.formItemId) {
       if (this.formRef && this.formRef.setFieldsValue) {
-        this.formRef.setFieldsValue({ ...defaultValues, ...nextProps.formItemConfig.properties });
+        this.formRef.setFieldsValue({ ...defaultValues, ...this.transFormValue(nextProps) });
       }
     }
   }
@@ -30,20 +33,32 @@ export default class InputProperty extends PureComponent {
   onFormValuesChange = (values) => {
     const { onFormConfigChange } = this.props;
     if (onFormConfigChange) {
-      onFormConfigChange(values)
+      const { label, ...restValues } = values
+      onFormConfigChange({ formProperties: { label }, properties: restValues })
+    }
+  }
+
+  transFormValue = props => {
+    const { formItemConfig } = props
+    return {
+      ...formItemConfig.formProperties,
+      ...formItemConfig.properties,
     }
   }
 
   render() {
-    const { formItemConfig } = this.props;
+    const initialValues = this.transFormValue(this.props)
     return (
       <div style={{ padding: 8 }}>
         <Form
           ref={ref => (this.formRef = ref)}
           layout="vertical"
-          initialValues={formItemConfig.properties}
+          initialValues={initialValues}
           onValuesChange={this.onFormValuesChange}
         >
+          <Form.Item name="label" label="标题">
+            <Input />
+          </Form.Item>
           <Form.Item name="addonBefore" label="前置标签">
             <Input />
           </Form.Item>
