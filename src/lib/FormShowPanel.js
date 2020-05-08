@@ -1,12 +1,7 @@
 import React from 'react'
-import GridLayout from 'react-grid-layout'
 import each from 'lodash/each'
-import { Form } from 'antd'
+import { Form, Row, Col } from 'antd'
 import FormItemComponent from './FormItemComponent'
-// import styles from '../styles.module.css'
-
-import 'react-grid-layout/css/styles.css'
-import 'react-resizable/css/styles.css'
 
 import 'antd/dist/antd.css'
 
@@ -20,43 +15,41 @@ export default class FormShowPanel extends React.Component {
 
   constructor(props) {
     super(props)
-    let formConfig = {
-      width: 800, // form width
-      labelAlign: 'right',
-    } // antd form config
-    const layoutItem = {}
-    const layout = []
-    if (props.formData !== undefined) {
-      formConfig = props.formData.formConfig
-      each(props.formData.formItems, v => {
-        layoutItem[v.id] = v;
-        layout.push(v.layout)
-      })
-    }
     this.state = {
       mounted: false,
-      layoutItem, // Form组件Item Key-Item 对应Object
-      layout, // Form组件Item--对应的布局
-      formConfig,
+      // layoutItem: {}, // Form组件Item Key-Item 对应Object
+      // layout: [], // Form组件Item--对应的布局
+      // formConfig: {
+      //   width: 800, // form width
+      //   labelAlign: 'right',
+      // }, // antd form config
     }
   }
 
   componentDidMount() {
     this.setState({ mounted: true })
+    // this.parseFormData(this.props)
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.formData !== undefined && nextProps.formData !== this.props.formData) {
-      const { formConfig, formItems } = nextProps.formData
-      const layoutItem = {}
-      const layout = []
-      each(formItems, v => {
-        layoutItem[v.id] = v;
-        layout.push(v.layout)
-      })
-      this.setState({ layoutItem, layout, formConfig })
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.formData !== undefined && nextProps.formData !== this.props.formData) {
+  //     this.parseFormData(nextProps)
+  //   }
+  // }
+
+  // parseFormData = (props) => {
+  //   const { formConfig, formItems } = props.formData
+  //   const layoutItem = {}
+  //   const layout = []
+  //   each(formItems, v => {
+  //     layoutItem[v.id] = v;
+  //     layout.push(v.layout)
+  //   })
+  //   const formItemsGrouped = groupBy(formItems, v => v.layout.y)
+  //   console.log('formItemsGrouped', formItemsGrouped)
+  //   // TODO 将react-grid-layout转化为row、col分组
+  //   this.setState({ layoutItem, layout, formConfig })
+  // }
 
   renderLayouItem = () => {
     const { layout, layoutItem } = this.state
@@ -77,26 +70,25 @@ export default class FormShowPanel extends React.Component {
     return doms
   }
 
+  /**
+   * FIXME 目前转化为Row、Col不支持复杂的结构变形
+   */
   render() {
-    const { layout, formConfig } = this.state
     const { formData, formRef, ...props } = this.props
+    if (formData === undefined) return null;
     return (
-      <Form labelAlign={formConfig.labelAlign} ref={formRef} {...props}>
-        <GridLayout
-          // className={styles.rfeGridLayout}
-          style={{ width: formConfig.width }}
-          layout={layout}
-          cols={12}
-          rowHeight={50}
-          width={formConfig.width}
-          useCSSTransforms={this.state.mounted}
-          compactType="vertical"
-          margin={[0, 0]}
-          isDraggable={false}
-          isResizable={false}
-        >
-          {this.renderLayouItem()}
-        </GridLayout>
+      <Form labelAlign={formData.formConfig.labelAlign} ref={formRef} {...props}>
+        <Row>
+          {
+            formData.formItems.map(item => {
+              return (
+                <Col key={item.id} md={item.layout.w * 2}>
+                  <FormItemComponent formItem={item} />
+                </Col>
+              )
+            })
+          }
+        </Row>
       </Form>
     )
   }

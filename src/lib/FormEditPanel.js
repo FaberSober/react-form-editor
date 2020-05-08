@@ -2,6 +2,7 @@ import React from 'react'
 import GridLayout from 'react-grid-layout'
 import each from 'lodash/each'
 import filter from 'lodash/filter'
+import sortBy from 'lodash/sortBy'
 import { FaTrashAlt } from 'react-icons/fa'
 import { Form, Button, Modal } from 'antd'
 import FormItemLabel from './FormItemLabel'
@@ -123,7 +124,9 @@ export default class FormEditPanel extends React.Component {
   getFormDataJson = () => {
     const { layout, layoutItem, formConfig } = this.state
     const formItems = []
-    each(layout, l => {
+    // layout排序：y、x
+    const layoutSorted = sortBy(layout, l => l.y * 100 + l.x)
+    each(layoutSorted, l => {
       const item = layoutItem[l.i]
       if (item !== undefined) {
         formItems.push({ id: l.i, ...item, layout: l })
