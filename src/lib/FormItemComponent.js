@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { DatePicker, Input, Form, Checkbox } from 'antd'
+import { DatePicker, Input, Form, Checkbox, InputNumber } from 'antd'
 
 /**
  * 组件Item拖动的渲染
@@ -23,13 +23,16 @@ export default class FormItemComponent extends PureComponent {
       case 'text_area':
         comp = <Form.Item {...formItem.formProperties}><Input.TextArea autoSize={{ minRows: 3 }} {...formItem.properties} /></Form.Item>
         break
+      case 'input_number':
+        comp = <Form.Item {...formItem.formProperties}><InputNumber {...formItem.properties} /></Form.Item>
+        break
       case 'date_picker':
         comp = <Form.Item {...formItem.formProperties}><DatePicker {...formItem.properties} /></Form.Item>
         break
       case 'checkbox':
         comp = (
           <Form.Item {...formItem.formProperties}>
-            <Checkbox.Group options={formItem.options} />
+            <Checkbox.Group {...formItem.properties} />
           </Form.Item>
         )
         break

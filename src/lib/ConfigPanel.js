@@ -63,7 +63,7 @@ export default class ConfigPanel extends PureComponent {
             </Radio.Group>
           </Form.Item>
           <Form.Item name="width" label="表单宽度">
-            <InputNumber step={1} />
+            <InputNumber step={1} min={400} />
           </Form.Item>
         </Form>
       </div>

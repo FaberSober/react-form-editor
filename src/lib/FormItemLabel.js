@@ -9,10 +9,44 @@ const FormItemLabelList = [
     key: 'basic_item',
     name: '基础字段',
     components: [
-      { icon: '', type: 'single_input', formPropertyCompnent: 'InputProperty', formProperties: { label: '单行文本', name: '单行文本', ...formItemFullLayout }, layout: { w: 12, h: 1 } },
-      { icon: '', type: 'text_area', formPropertyCompnent: 'TextAreaProperty', formProperties: { label: '多行文本', name: '多行文本', ...formItemFullLayout }, layout: { w: 12, h: 2 } },
-      { icon: '', type: 'date_picker', formPropertyCompnent: '', formProperties: { label: '日期选择', name: '日期选择', ...formItemFullLayout }, layout: { w: 12, h: 1 } },
-      { icon: '', type: 'checkbox', formPropertyCompnent: '', formProperties: { label: '多选框', name: '多选框', ...formItemFullLayout }, layout: { w: 12, h: 1 }, options: [{ label: 'A', value: 'A' }, { label: 'B', value: 'B' }, { label: 'C', value: 'C' }] },
+      {
+        icon: '',
+        type: 'single_input',
+        layout: { w: 12, h: 1 },
+        formPropertyCompnent: 'InputProperty',
+        formProperties: { label: '单行文本', name: '单行文本', ...formItemFullLayout },
+      },
+      {
+        icon: '',
+        type: 'text_area',
+        layout: { w: 12, h: 2 },
+        formPropertyCompnent: 'TextAreaProperty',
+        formProperties: { label: '多行文本', name: '多行文本', ...formItemFullLayout },
+      },
+      {
+        icon: '',
+        type: 'input_number',
+        layout: { w: 12, h: 1 },
+        formPropertyCompnent: 'InputNumberProperty',
+        formProperties: { label: '数字输入', name: '数字输入', ...formItemFullLayout },
+      },
+      {
+        icon: '',
+        type: 'date_picker',
+        layout: { w: 12, h: 1 },
+        formPropertyCompnent: 'DatePickerProperty',
+        formProperties: { label: '日期选择', name: '日期选择', ...formItemFullLayout },
+      },
+      {
+        icon: '',
+        type: 'checkbox',
+        layout: { w: 12, h: 1 },
+        formPropertyCompnent: 'CheckboxProperty',
+        formProperties: { label: '多选框', name: '多选框', ...formItemFullLayout },
+        properties: {
+          options: [{ label: 'A', value: 'A' }, { label: 'B', value: 'B' }, { label: 'C', value: 'C' }]
+        },
+      },
     ],
   }
 ]
