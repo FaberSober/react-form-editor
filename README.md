@@ -4,6 +4,17 @@
 
 [![NPM](https://img.shields.io/npm/v/react-form-editor.svg)](https://www.npmjs.com/package/react-form-editor) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+## Still In Working Progress
+
+## Example
+Example: [https://FaberSober.github.io/react-form-editor](hhttps://FaberSober.github.io/react-form-editor)
+
+Form Edit Panel
+![Form Edit Panel](./doc/img/edit.png)
+
+Form Show Panel
+![Form Show Panel](./doc/img/preview.png)
+
 ## Install
 
 ```bash
@@ -45,4 +56,4 @@ class Example extends Component {
 
 ## License
 
-MIT © [https://github.com/FaberSober](https://github.com/https://github.com/FaberSober)
+MIT © [FaberSober](https://github.com/FaberSober)
