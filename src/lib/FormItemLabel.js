@@ -77,6 +77,15 @@ const FormItemLabelList = [
         formProperties: { label: '滑动输入', name: '滑动输入', ...formItemFullLayout },
         properties: { },
       },
+      {
+        icon: '',
+        type: 'Select',
+        layout: { w: 12, h: 1 },
+        formProperties: { label: '选择器', name: '选择器', ...formItemFullLayout },
+        properties: {
+          options: [{ label: 'A', value: 'A' }, { label: 'B', value: 'B' }, { label: 'C', value: 'C' }]
+        },
+      },
     ],
   }
 ]

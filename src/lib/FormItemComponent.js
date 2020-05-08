@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { DatePicker, Input, Form, Checkbox, InputNumber, Rate, Radio, Switch, Slider } from 'antd'
+import { DatePicker, Input, Form, Checkbox, InputNumber, Rate, Radio, Switch, Slider, Select } from 'antd'
 
 /**
  * 组件Item拖动的渲染
@@ -47,6 +47,9 @@ export default class FormItemComponent extends PureComponent {
         break
       case 'Slider':
         comp = <Form.Item {...formItem.formProperties}><Slider {...formItem.properties} /></Form.Item>
+        break
+      case 'Select':
+        comp = <Form.Item {...formItem.formProperties}><Select {...formItem.properties} /></Form.Item>
         break
     }
     return (

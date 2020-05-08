@@ -7,6 +7,7 @@ import RateProperty from './RateProperty'
 import RadioProperty from './RadioProperty'
 import SwitchProperty from './SwitchProperty'
 import SliderProperty from './SliderProperty'
+import SelectProperty from './SelectProperty'
 
 export {
   InputProperty,
@@ -18,4 +19,5 @@ export {
   RadioProperty,
   SwitchProperty,
   SliderProperty,
+  SelectProperty,
 }
