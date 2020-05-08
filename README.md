@@ -15,12 +15,12 @@ npm install --save react-form-editor
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from 'react-form-editor'
+import FormEditPanel from 'react-form-editor'
 import 'react-form-editor/dist/index.css'
 
 class Example extends Component {
   render() {
-    return <MyComponent />
+    return <FormEditPanel />
   }
 }
 ```
