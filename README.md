@@ -7,7 +7,7 @@
 ## Still In Working Progress
 
 ## Example
-Example: [https://FaberSober.github.io/react-form-editor](hhttps://FaberSober.github.io/react-form-editor)
+[https://FaberSober.github.io/react-form-editor](hhttps://FaberSober.github.io/react-form-editor)
 
 Form Edit Panel
 ![Form Edit Panel](./doc/img/edit.png)
