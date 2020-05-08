@@ -73,7 +73,7 @@ export default class ConfigPanel extends PureComponent {
   render() {
     const { tab } = this.state
     const { formItemId, formItemConfig } = this.props;
-    const FormItemConfigComponent = (formItemConfig && FormProperty[formItemConfig.formPropertyCompnent]) || NulConfig
+    const FormItemConfigComponent = (formItemConfig && FormProperty[formItemConfig.type + 'Property']) || NulConfig
     return (
       <div>
         <div className={styles.rfeConfigTabDiv}>

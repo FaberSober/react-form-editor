@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { DatePicker, Input, Form, Checkbox, InputNumber, Rate, Radio, Switch } from 'antd'
+import { DatePicker, Input, Form, Checkbox, InputNumber, Rate, Radio, Switch, Slider } from 'antd'
 
 /**
  * 组件Item拖动的渲染
@@ -17,33 +17,36 @@ export default class FormItemComponent extends PureComponent {
     let comp = <div>组件未定义</div>
     // const formItemFullLayout = { labelCol: { span: 3 }, wrapperCol: { span: 20 } };
     switch (formItem.type) {
-      case 'single_input':
+      case 'Input':
         comp = <Form.Item {...formItem.formProperties}><Input {...formItem.properties} /></Form.Item>
         break
-      case 'text_area':
+      case 'TextArea':
         comp = <Form.Item {...formItem.formProperties}><Input.TextArea autoSize={{ minRows: 3 }} {...formItem.properties} /></Form.Item>
         break
-      case 'input_number':
+      case 'InputNumber':
         comp = <Form.Item {...formItem.formProperties}><InputNumber {...formItem.properties} /></Form.Item>
         break
-      case 'date_picker':
+      case 'DatePicker':
         comp = <Form.Item {...formItem.formProperties}><DatePicker {...formItem.properties} /></Form.Item>
         break
-      case 'checkbox':
+      case 'Checkbox':
         comp = (
           <Form.Item {...formItem.formProperties}>
             <Checkbox.Group {...formItem.properties} />
           </Form.Item>
         )
         break
-      case 'rate':
+      case 'Rate':
         comp = <Form.Item {...formItem.formProperties}><Rate {...formItem.properties} /></Form.Item>
         break
-      case 'radio':
+      case 'Radio':
         comp = <Form.Item {...formItem.formProperties}><Radio.Group {...formItem.properties} /></Form.Item>
         break
-      case 'switch':
+      case 'Switch':
         comp = <Form.Item {...formItem.formProperties}><Switch {...formItem.properties} /></Form.Item>
+        break
+      case 'Slider':
+        comp = <Form.Item {...formItem.formProperties}><Slider {...formItem.properties} /></Form.Item>
         break
     }
     return (

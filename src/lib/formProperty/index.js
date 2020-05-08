@@ -6,6 +6,7 @@ import DatePickerProperty from './DatePickerProperty'
 import RateProperty from './RateProperty'
 import RadioProperty from './RadioProperty'
 import SwitchProperty from './SwitchProperty'
+import SliderProperty from './SliderProperty'
 
 export {
   InputProperty,
@@ -16,4 +17,5 @@ export {
   RateProperty,
   RadioProperty,
   SwitchProperty,
+  SliderProperty,
 }

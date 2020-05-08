@@ -30,7 +30,7 @@ class Example extends Component {
 [
   {
     id: 'abcdefgh', // 8位随机字母ID
-    type: 'single_input', // form组件类型
+    type: 'Input', // form组件类型
     label: '单行文本', // form组件Label标签
     layout: { w: 12, h: 1 } }, //  组件布局（网格布局，分为12格）：w-宽/h-高
     options: [
