@@ -1,13 +1,9 @@
 import React, { PureComponent, Fragment } from 'react'
 import { Form, Radio, InputNumber, Input } from 'antd'
 
-import InputProperty from './formProperty/InputProperty'
+import * as FormProperty from './formProperty'
 
 import styles from '../styles.module.css'
-
-const FormItemConfig = {
-  single_input: InputProperty,
-}
 
 const NulConfig = () => (<div>TODO</div>)
 
@@ -77,7 +73,7 @@ export default class ConfigPanel extends PureComponent {
   render() {
     const { tab } = this.state
     const { formItemId, formItemConfig } = this.props;
-    const FormItemConfigComponent = (formItemConfig && FormItemConfig[formItemConfig.type]) || NulConfig
+    const FormItemConfigComponent = (formItemConfig && FormProperty[formItemConfig.formPropertyCompnent]) || NulConfig
     return (
       <div>
         <div className={styles.rfeConfigTabDiv}>

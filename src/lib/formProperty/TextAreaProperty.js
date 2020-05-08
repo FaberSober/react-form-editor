@@ -12,9 +12,9 @@ const defaultValues = {
 }
 
 /**
- * antd#Input组件配置项
+ * antd#TextArea 组件配置项
  */
-export default class InputProperty extends BasePropertyComponent {
+export default class TextAreaProperty extends BasePropertyComponent {
   static defaultProps = {
     formItemId: undefined,
     formItemConfig: {},
@@ -63,9 +63,6 @@ export default class InputProperty extends BasePropertyComponent {
         >
           {this.renderBaseFormProperties()}
           <Form.Item name="addonBefore" label="前置标签">
-            <Input />
-          </Form.Item>
-          <Form.Item name="addonAfter" label="后置标签">
             <Input />
           </Form.Item>
         </Form>

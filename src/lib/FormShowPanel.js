@@ -16,7 +16,7 @@ export default class FormShowPanel extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      mounted: false,
+      // mounted: false,
       // layoutItem: {}, // Form组件Item Key-Item 对应Object
       // layout: [], // Form组件Item--对应的布局
       // formConfig: {
@@ -26,10 +26,10 @@ export default class FormShowPanel extends React.Component {
     }
   }
 
-  componentDidMount() {
-    this.setState({ mounted: true })
-    // this.parseFormData(this.props)
-  }
+  // componentDidMount() {
+  //   this.setState({ mounted: true })
+  //   this.parseFormData(this.props)
+  // }
 
   // componentWillReceiveProps(nextProps) {
   //   if (nextProps.formData !== undefined && nextProps.formData !== this.props.formData) {
