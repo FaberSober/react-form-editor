@@ -62,6 +62,13 @@ export default class ConfigPanel extends PureComponent {
               <Radio.Button value="right">右对齐</Radio.Button>
             </Radio.Group>
           </Form.Item>
+          <Form.Item name="size" label="表单大小">
+            <Radio.Group buttonStyle="solid">
+              <Radio.Button value="small">small</Radio.Button>
+              <Radio.Button value="middle">middle</Radio.Button>
+              <Radio.Button value="large">large</Radio.Button>
+            </Radio.Group>
+          </Form.Item>
           <Form.Item name="width" label="表单宽度">
             <InputNumber step={1} min={400} />
           </Form.Item>

@@ -77,7 +77,7 @@ export default class FormShowPanel extends React.Component {
     const { formData, formRef, ...props } = this.props
     if (formData === undefined) return null;
     return (
-      <Form labelAlign={formData.formConfig.labelAlign} ref={formRef} {...props}>
+      <Form ref={formRef} {...formData.formConfig} {...props}>
         <Row>
           {
             formData.formItems.map(item => {

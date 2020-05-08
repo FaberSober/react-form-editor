@@ -36,6 +36,7 @@ export default class FormEditPanel extends React.Component {
     formConfig: {
       width: 800, // form width
       labelAlign: 'right',
+      size: 'middle', // form size
     }, // antd form config
     previewModalVisible: false,
     previewFormData: undefined,
@@ -173,7 +174,7 @@ export default class FormEditPanel extends React.Component {
             <Button type="link" onClick={this.handlePreview}>预览</Button>
             <Button type="link" onClick={this.handleSave}>保存</Button>
           </div>
-          <Form labelAlign={formConfig.labelAlign}>
+          <Form {...formConfig}>
             <GridLayout
               className={styles.rfeGridLayout}
               style={{ width: formConfig.width }}

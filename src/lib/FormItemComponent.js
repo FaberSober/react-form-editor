@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { DatePicker, Input, Form, Checkbox, InputNumber, Rate, Radio, Switch, Slider, Select } from 'antd'
+import { DatePicker, TimePicker, Input, Form, Checkbox, InputNumber, Rate, Radio, Switch, Slider, Select, TreeSelect, Cascader } from 'antd'
 
 /**
  * 组件Item拖动的渲染
@@ -29,6 +29,9 @@ export default class FormItemComponent extends PureComponent {
       case 'DatePicker':
         comp = <Form.Item {...formItem.formProperties}><DatePicker {...formItem.properties} /></Form.Item>
         break
+      case 'TimePicker':
+        comp = <Form.Item {...formItem.formProperties}><TimePicker {...formItem.properties} /></Form.Item>
+        break
       case 'Checkbox':
         comp = (
           <Form.Item {...formItem.formProperties}>
@@ -50,6 +53,12 @@ export default class FormItemComponent extends PureComponent {
         break
       case 'Select':
         comp = <Form.Item {...formItem.formProperties}><Select {...formItem.properties} /></Form.Item>
+        break
+      case 'TreeSelect':
+        comp = <Form.Item {...formItem.formProperties}><TreeSelect {...formItem.properties} /></Form.Item>
+        break
+      case 'Cascader':
+        comp = <Form.Item {...formItem.formProperties}><Cascader {...formItem.properties} /></Form.Item>
         break
     }
     return (

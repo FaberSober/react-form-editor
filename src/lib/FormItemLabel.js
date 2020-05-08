@@ -40,6 +40,13 @@ const FormItemLabelList = [
       },
       {
         icon: '',
+        type: 'TimePicker',
+        layout: { w: 12, h: 1 },
+        formProperties: { label: '时间选择', name: '时间选择', ...formItemFullLayout },
+        properties: { },
+      },
+      {
+        icon: '',
         type: 'Checkbox',
         layout: { w: 12, h: 1 },
         formProperties: { label: '多选框', name: '多选框', ...formItemFullLayout },
@@ -84,6 +91,62 @@ const FormItemLabelList = [
         formProperties: { label: '选择器', name: '选择器', ...formItemFullLayout },
         properties: {
           options: [{ label: 'A', value: 'A' }, { label: 'B', value: 'B' }, { label: 'C', value: 'C' }]
+        },
+      },
+      {
+        icon: '',
+        type: 'Cascader',
+        layout: { w: 12, h: 1 },
+        formProperties: { label: '级联选择', name: '级联选择', ...formItemFullLayout },
+        properties: {
+          options: [
+            {
+              label: 'Node1',
+              value: '0-0',
+              children: [
+                {
+                  label: 'Child Node1',
+                  value: '0-0-1',
+                },
+                {
+                  label: 'Child Node2',
+                  value: '0-0-2',
+                },
+              ],
+            },
+            {
+              label: 'Node2',
+              value: '0-1',
+            },
+          ]
+        },
+      },
+      {
+        icon: '',
+        type: 'TreeSelect',
+        layout: { w: 12, h: 1 },
+        formProperties: { label: '树选择', name: '树选择', ...formItemFullLayout },
+        properties: {
+          treeData: [
+            {
+              title: 'Node1',
+              value: '0-0',
+              children: [
+                {
+                  title: 'Child Node1',
+                  value: '0-0-1',
+                },
+                {
+                  title: 'Child Node2',
+                  value: '0-0-2',
+                },
+              ],
+            },
+            {
+              title: 'Node2',
+              value: '0-1',
+            },
+          ]
         },
       },
     ],
