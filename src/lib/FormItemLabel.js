@@ -15,6 +15,7 @@ const FormItemLabelList = [
         layout: { w: 12, h: 1 },
         formPropertyCompnent: 'InputProperty',
         formProperties: { label: '单行文本', name: '单行文本', ...formItemFullLayout },
+        properties: { },
       },
       {
         icon: '',
@@ -22,6 +23,7 @@ const FormItemLabelList = [
         layout: { w: 12, h: 2 },
         formPropertyCompnent: 'TextAreaProperty',
         formProperties: { label: '多行文本', name: '多行文本', ...formItemFullLayout },
+        properties: { },
       },
       {
         icon: '',
@@ -29,6 +31,7 @@ const FormItemLabelList = [
         layout: { w: 12, h: 1 },
         formPropertyCompnent: 'InputNumberProperty',
         formProperties: { label: '数字输入', name: '数字输入', ...formItemFullLayout },
+        properties: { },
       },
       {
         icon: '',
@@ -36,6 +39,7 @@ const FormItemLabelList = [
         layout: { w: 12, h: 1 },
         formPropertyCompnent: 'DatePickerProperty',
         formProperties: { label: '日期选择', name: '日期选择', ...formItemFullLayout },
+        properties: { },
       },
       {
         icon: '',
@@ -46,6 +50,32 @@ const FormItemLabelList = [
         properties: {
           options: [{ label: 'A', value: 'A' }, { label: 'B', value: 'B' }, { label: 'C', value: 'C' }]
         },
+      },
+      {
+        icon: '',
+        type: 'rate',
+        layout: { w: 12, h: 1 },
+        formPropertyCompnent: 'RateProperty',
+        formProperties: { label: '评分', name: '评分', ...formItemFullLayout },
+        properties: { },
+      },
+      {
+        icon: '',
+        type: 'radio',
+        layout: { w: 12, h: 1 },
+        formPropertyCompnent: 'RadioProperty',
+        formProperties: { label: '单选框', name: '单选框', ...formItemFullLayout },
+        properties: {
+          options: [{ label: 'A', value: 'A' }, { label: 'B', value: 'B' }, { label: 'C', value: 'C' }]
+        },
+      },
+      {
+        icon: '',
+        type: 'switch',
+        layout: { w: 12, h: 1 },
+        formPropertyCompnent: 'SwitchProperty',
+        formProperties: { label: '开关', name: '开关', ...formItemFullLayout },
+        properties: { },
       },
     ],
   }

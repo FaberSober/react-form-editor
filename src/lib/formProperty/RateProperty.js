@@ -12,9 +12,9 @@ const defaultValues = {
 }
 
 /**
- * antd#TextArea 组件配置项
+ * antd#Rate 组件配置项
  */
-export default class CheckboxProperty extends BasePropertyComponent {
+export default class RateProperty extends BasePropertyComponent {
   static defaultProps = {
     formItemId: undefined,
     formItemConfig: {},
@@ -39,7 +39,7 @@ export default class CheckboxProperty extends BasePropertyComponent {
         labelCol,
         wrapperCol,
       }
-      onFormConfigChange({ formProperties, properties: { ...restValues, options: JSON.parse(restValues.options) } })
+      onFormConfigChange({ formProperties, properties: restValues })
     }
   }
 
@@ -48,7 +48,6 @@ export default class CheckboxProperty extends BasePropertyComponent {
     return {
       ...formProperties,
       ...properties,
-      options: JSON.stringify(properties.options)
     }
   }
 
@@ -63,8 +62,11 @@ export default class CheckboxProperty extends BasePropertyComponent {
           onValuesChange={this.onFormValuesChange}
         >
           {this.renderBaseFormProperties()}
-          <Form.Item name="options" label="options">
-            <Input.TextArea autoSize />
+          <Form.Item name="addonBefore" label="前置标签">
+            <Input />
+          </Form.Item>
+          <Form.Item name="addonAfter" label="后置标签">
+            <Input />
           </Form.Item>
         </Form>
       </div>

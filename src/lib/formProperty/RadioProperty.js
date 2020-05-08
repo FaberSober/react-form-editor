@@ -14,7 +14,7 @@ const defaultValues = {
 /**
  * antd#TextArea 组件配置项
  */
-export default class CheckboxProperty extends BasePropertyComponent {
+export default class RadioProperty extends BasePropertyComponent {
   static defaultProps = {
     formItemId: undefined,
     formItemConfig: {},

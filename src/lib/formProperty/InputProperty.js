@@ -12,7 +12,7 @@ const defaultValues = {
 }
 
 /**
- * antd#Input组件配置项
+ * antd#Input 组件配置项
  */
 export default class InputProperty extends BasePropertyComponent {
   static defaultProps = {
